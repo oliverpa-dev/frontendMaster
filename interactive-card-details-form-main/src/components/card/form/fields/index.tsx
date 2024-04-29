@@ -1,4 +1,7 @@
 import React from "react";
+  const { handleCheckType } = props;
+  const [isChecked, setIsChecked] = useState<boolean>();
+  const [inputValue, setInputValue] = useState<string>("");
 
 export const Field = () => {
   return (
