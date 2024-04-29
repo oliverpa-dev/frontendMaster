@@ -3,7 +3,14 @@ import React from "react";
   const [isChecked, setIsChecked] = useState<boolean>();
   const [inputValue, setInputValue] = useState<string>("");
 
-export const Field = () => {
+  // Callback function that is passed into the handleCheckType
+  const callback = () => {
+    if (isChecked === undefined) {
+      setIsChecked(true);
+    }
+    setIsChecked(!isChecked);
+  };
+
   return (
     <div className="card-fields">
       <div className="card-fields__field">
@@ -29,7 +36,9 @@ export const Field = () => {
         </div>
       </div>
       <div className="card-fields__button">
-        <button>confirm</button>
+        <button onClick={() => handleCheckType(inputValue, callback)}>
+          confirm
+        </button>
       </div>
     </div>
   );
