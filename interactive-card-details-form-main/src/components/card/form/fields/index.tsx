@@ -1,4 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+// import { Checker } from "..";
+
+interface FieldProps {
+  handleCheckType: (value: string, cb: () => void) => void;
+}
+
+export const Field: React.FC<FieldProps> = (props) => {
   const { handleCheckType } = props;
   const [isChecked, setIsChecked] = useState<boolean>();
   const [inputValue, setInputValue] = useState<string>("");
