@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-// import { Checker } from "..";
 
 interface FieldProps {
-  handleCheckType: (value: string, cb: () => void) => void;
+  handleCheckType: (value: string, booleanCheck: () => void) => void;
 }
 
 export const Field: React.FC<FieldProps> = (props) => {
@@ -10,12 +9,14 @@ export const Field: React.FC<FieldProps> = (props) => {
   const [isChecked, setIsChecked] = useState<boolean>();
   const [inputValue, setInputValue] = useState<string>("");
 
-  // Callback function that is passed into the handleCheckType
-  const callback = () => {
-    if (isChecked === undefined) {
-      setIsChecked(true);
-    }
-    setIsChecked(!isChecked);
+  // Function that checks the type of the value
+  const booleanCheck = (): void => {
+    if (isChecked === undefined) setIsChecked(true);
+
+    // if (isChecked === undefined) {
+    //   setIsChecked(true);
+    // }
+    // setIsChecked(!isChecked);
   };
 
   return (
@@ -25,7 +26,7 @@ export const Field: React.FC<FieldProps> = (props) => {
           <label>cardholder name</label>
         </div>
         <div className="card-fields__field-input">
-          <input type="string" />
+          <input onChange={(e) => console.log(e.target.value)} type="string" />
         </div>
         <div className="card-fields__field-error">
           <span>Error</span>
@@ -43,7 +44,7 @@ export const Field: React.FC<FieldProps> = (props) => {
         </div>
       </div>
       <div className="card-fields__button">
-        <button onClick={() => handleCheckType(inputValue, callback)}>
+        <button onClick={() => handleCheckType(inputValue, booleanCheck)}>
           confirm
         </button>
       </div>
